@@ -23,7 +23,7 @@ MSYS_NO_PATHCONV=1 npx vite build --base=/yasno-growth-main/
 ```bash
 # cd + относительный путь — иначе scp примет "C:" за хост.
 cd C:\Users\Alex\yasno-growth-os\_deploy
-scp -r yasno-growth-main root@kewvvegxjv:/var/www/html/
+scp -r yasno-growth-main root@inshinlab.com:/var/www/html/
 ```
 
 ## 3. nginx — SPA-fallback (.htaccess nginx игнорирует)
