@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Бренд-токены Ясно (Growth OS) ────────────────────────────────────
+   Тёплая бумага + синий-герой + clay скупо. НЕ дефолтный кремовый-serif.
+   Hero-синий #2F6BFF — намеренная отдельная под-айдентика Growth OS
+   (концепт-сайт Ясно использует свой #279BE0); расхождение — не баг.       */
+:root {
+  --paper: #f5f0e8; /* тёплый off-white фон */
+  --surface: #ece4d6; /* тёплая карточка/секция */
+  --surface-2: #e4daccf2; /* вложенная поверхность / hover */
+  --ink: #15161a; /* основной текст */
+  --ink-soft: #4a4a52; /* вторичный текст */
+  --blue: #2f6bff; /* ГЕРОЙ-акцент */
+  --blue-deep: #1e3fa8; /* синий для текста на светлом — контраст AA */
+  --clay: #c9745a; /* тёплый второстепенный акцент, СКУПО */
+  --line: rgba(21, 22, 26, 0.1); /* хайрлайн-разделители */
+  --blue-tint: rgba(47, 107, 255, 0.06); /* единая подложка «синяя карточка» */
+  --clay-tint: rgba(201, 116, 90, 0.06); /* единая тёплая подложка */
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Страховка: гасим CSS-переходы/анимации; JS-анимации Framer гасит useReveal(). */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: theme('fontFamily.sans');
+    font-feature-settings: 'cv01', 'cv03', 'ss01';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: rgba(47, 107, 255, 0.18);
+    color: var(--ink);
+  }
+
+  /* Видимый keyboard-focus на всём интерактивном */
+  :where(a, button, [tabindex]):focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: theme('fontFamily.display');
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  /* Mono eyebrow-лейбл: 01 / ACQUISITION */
+  .eyebrow {
+    font-family: theme('fontFamily.mono');
+    font-size: 0.72rem;
+    line-height: 1;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .data-mono {
+    font-family: theme('fontFamily.mono');
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.01em;
+  }
+
+  .shell {
+    width: 100%;
+    max-width: theme('maxWidth.shell');
+    margin-inline: auto;
+    padding-inline: clamp(20px, 5vw, 56px);
+  }
+
+  .hairline {
+    height: 1px;
+    width: 100%;
+    background: var(--line);
+  }
+}
+
+/* Тонкая бумажная зернистость фона — характер, не декор. Очень скупо. */
+.paper-grain {
+  background-image: radial-gradient(rgba(21, 22, 26, 0.022) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
