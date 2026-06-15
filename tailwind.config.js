@@ -14,6 +14,9 @@ export default {
         'blue-tint': 'var(--blue-tint)',
         clay: 'var(--clay)',
         'clay-tint': 'var(--clay-tint)',
+        care: 'var(--care)',
+        'care-tint': 'var(--care-tint)',
+        road: 'var(--road)',
         line: 'var(--line)',
       },
       fontFamily: {

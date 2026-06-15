@@ -3,20 +3,19 @@ import { motion, useScroll, useReducedMotion } from 'framer-motion'
 import { ArrowUp } from 'lucide-react'
 
 const SECTIONS = [
-  { id: 'manifesto', label: 'Манифест' },
-  { id: 'system', label: 'Модули' },
-  { id: 'engine', label: 'Движок' },
-  { id: 'crm', label: 'CRM' },
-  { id: 'strategy', label: 'Стратегия' },
-  { id: 'roadmap', label: 'Роадмап' },
+  { id: 'roadmap', label: 'Карта' },
+  { id: 'diagnosis', label: 'Диагноз' },
+  { id: 'thesis', label: 'Тезис' },
+  { id: 'projects', label: 'Проекты' },
+  { id: 'method', label: 'Метод' },
 ]
 
 // Wayfinding на лонгскролле: полоса прогресса + dot-rail (xl) + «наверх».
 export default function ProgressNav() {
   const { scrollYProgress } = useScroll()
   const reduce = useReducedMotion()
-  // Пусто на герое (у Hero нет id) — подсветка появляется, когда секция в зоне.
-  const [active, setActive] = useState('')
+  // На первом экране подсвечена «Карта» (Hero id=roadmap).
+  const [active, setActive] = useState(SECTIONS[0].id)
   const [showTop, setShowTop] = useState(false)
 
   useEffect(() => {

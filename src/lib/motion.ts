@@ -24,23 +24,6 @@ export const staggerContainer: Variants = {
   },
 }
 
-/** Воронка собирается сверху вниз — стартует ПОСЛЕ тезиса (приоритет смысла). */
-export const funnelContainer: Variants = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.1, delayChildren: 0.35 },
-  },
-}
-
-export const funnelStage: Variants = {
-  hidden: { opacity: 0, y: -14 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: EASE_SOFT },
-  },
-}
-
 /**
  * Props для whileInView-ревила, уважающие prefers-reduced-motion.
  * При reduce: элемент сразу в состоянии 'show' (никакой анимации/фейда).
